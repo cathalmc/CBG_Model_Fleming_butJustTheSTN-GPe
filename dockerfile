@@ -24,14 +24,6 @@ WORKDIR /usr/app/src/CBG_Fleming_Model
 
 COPY ./Cortex_BasalGanglia_DBS_model/*.txt ./
 
-COPY ./Cortex_BasalGanglia_DBS_model/*.c ./
-COPY ./Cortex_BasalGanglia_DBS_model/*.mod ./
-COPY ./Cortex_BasalGanglia_DBS_model/*.o ./
-COPY ./Cortex_BasalGanglia_DBS_model/*.html ./
+COPY ./Study1_STN-GPe_Network_Stimulator/* ./
+
 RUN nrnivmodl
-
-COPY ./Cortex_BasalGanglia_DBS_model/*.py ./
-COPY ./Cortex_BasalGanglia_DBS_model/*.npy ./
-COPY ./Cortex_BasalGanglia_DBS_model/*.yml ./
-
-ENTRYPOINT ["time", "mpirun", "--allow-run-as-root", "-np", "4", "python3", "/usr/app/src/CBG_Fleming_Model/run_model.py", "/usr/app/src/CBG_Fleming_Model/conf_zero_4s.yml"]
